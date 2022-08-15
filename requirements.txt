@@ -1,0 +1,8 @@
+# eth web3
+web3==5.30.0
+
+# encoding/decoding eth abi definitions
+eth-abi==2.2.0
+
+# progress bar
+tqdm==4.64.0

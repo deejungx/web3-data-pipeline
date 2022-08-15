@@ -1,0 +1,25 @@
+version: "3.4"
+
+services:
+  web3_pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: web3_pipeline
+    container_name: web3_pipeline
+    environment:
+      - "secrets_mounted=${secrets_mounted}"
+      - "GOOGLE_APPLICATION_CREDENTIALS=/tmp/keys/keyfile.json"
+      - "PORT=7000"
+      - "LOG_LEVEL=debug"
+    volumes:
+      - ${GOOGLE_APPLICATION_CREDENTIALS}:/tmp/keys/keyfile.json:ro
+    ports:
+      - "7000:7000"
+    restart: always
+    networks:
+      - web3
+
+networks:
+  web3:
+    driver: bridge
